@@ -1,0 +1,88 @@
+<p>
+  comp1 works!
+</p>
+<div>
+  <select (change)="this.curentUser_ID = $event.currentTarget.value; ChangeUser()" >
+    <option *ngFor="let user of users" value={{user?.id}}>
+      {{user?.name}}
+      </option>
+  </select>
+</div>
+<!-- <div>
+  <ul>
+    <tr *ngFor="let u of users">
+      <td>{{ u?.id }}</td>
+      <td>{{ u?.name }}</td>
+      <td>{{ u?.email }}</td>
+    </tr>
+  </ul>
+</div> -->
+ <!-- <div>
+  <ul>
+    <tr *ngFor="let e of emails">
+      <td>{{ e?.id }}</td>
+      <td>{{ e?.content}}</td>
+      <td>{{ e?.exP_ID}}</td>
+      <td>{{ e?.desT_ID}}</td>
+      <td>{{ e?.read}}</td>
+
+    </tr>
+  </ul>
+</div> -->
+<!--<div>
+  <p>{{curentUser?.id}}</p>
+</div> -->
+
+<div>
+  <h3>Inbox</h3>
+  <hr>
+  <div *ngIf="emailsEx?.length == 0">
+    <h3>No Emails</h3>
+  </div>
+  <div *ngIf="emailsEx?.length > 0">
+    <table>
+      <tr>
+        <th style="width: 60%">Email</th>
+        <th style="width: 20%">From</th>
+        <th style="width: 20%">Del</th>
+      </tr>
+      <tr *ngFor="let e of emailsEx">
+        <td>{{e?.content}}</td>
+        <td>{{e?.exP_ID}}</td>
+        <td>
+          <button (click)="$event.stopPropagation()" (click)="deleteEmail(e.id)">Delete</button>
+        </td>
+      </tr>
+    </table>
+
+    <div>
+    </div>
+  </div>  
+  <br>
+  <h3>Outbox</h3>
+  <hr>
+  <div *ngIf="emailsSe?.length == 0">
+    <h3>No Emails</h3>
+  </div>  
+  </div>
+  
+  <div *ngIf="emailsSe?.length > 0">
+    <table>
+      <tr>
+        <th style="width: 60%">Email</th>
+        <th style="width: 20%">To</th>
+        <th style="width: 20%">Del</th>
+      </tr>
+      <tr *ngFor="let e of emailsSe">
+        <td>{{e?.content}}</td>
+        <td>{{e?.desT_ID}}</td>
+        <td>
+          <button (click)="$event.stopPropagation()" (click)="deleteEmail(e.id)">Delete</button>
+        </td>
+      </tr>
+    </table>
+
+    <div>
+    </div>
+    
+</div>
